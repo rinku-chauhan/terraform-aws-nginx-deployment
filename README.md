@@ -46,13 +46,6 @@ terraform-aws-nginx-deployment/
 ├── LICENSE
 └── docs/
     └── screenshots/
-        ├── 01-default-vpc-and-ami-id-details.png
-        ├── 02-terraform-init.png
-        ├── 03-terraform-initialized-and-validated.png
-        ├── 04-terraform-plan.png
-        ├── 05-terraform-apply-output.png
-        ├── 06-ec2-instance-verified-on-aws-console.png
-        └── 07-nginx-custom-webpage.png
 ```
 
 ## Configuration Details
@@ -178,21 +171,28 @@ The following screenshots document the implementation and deployment process.
 
 ![Nginx Custom Webpage](docs/screenshots/07-nginx-custom-webpage.png)
 
-## Infrastructure Cleanup
 
-To remove the infrastructure provisioned by Terraform:
+## Cleanup and Resource Destruction
+
+After verifying the Nginx deployment, the AWS resources were destroyed using Terraform to avoid unnecessary resource usage and potential ongoing charges.
+
+Run the following command from the project directory:
 
 ```bash
 terraform destroy
 ```
 
-Review the proposed deletion and enter `yes` to confirm.
+Review the resources Terraform plans to destroy and type `yes` to confirm.
 
-Verify that the resources have been removed:
+**Cleanup verification:**
 
-```bash
-terraform state list
-```
+- EC2 instance successfully terminated.
+- Associated security group successfully deleted.
+- Terraform confirmed: `Destroy complete! Resources: 2 destroyed.`
+
+### Cleanup Screenshot
+
+![Terraform Destroy Demonstration](docs/screenshots/08-terraform-destroy-demonstration.png)
 
 ## Learning Outcomes
 
